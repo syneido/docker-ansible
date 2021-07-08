@@ -3,9 +3,10 @@ ARG USER
 ARG UID
 
 RUN apk add --no-cache --virtual .compile_deps build-base python3-dev libffi-dev libressl-dev \
-    && apk add --no-cache openssh-client rust cargo \
+    && apk add --no-cache openssh-client rust cargo\
     && pip install --upgrade pip cffi pycrypto \
     && pip install ansible \
     && apk del .compile_deps \
     && mkdir /.ansible && chmod o+w /.ansible \
-    && adduser -D -H -h / -u "$UID" "$USER"
+    && adduser -D -H -h / -u "$UID" "$USER" \
+    && apk add --no-cache make
