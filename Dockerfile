@@ -3,7 +3,7 @@ ARG USER
 ARG UID
 
 RUN apk add --no-cache --virtual .compile_deps build-base python3-dev libffi-dev libressl-dev \
-    && apk add --no-cache openssh-client rust cargo\
+    && apk add --no-cache openssh-client rust cargo rsync\
     && pip install --upgrade pip cffi pycrypto \
     && pip install ansible \
     && apk del .compile_deps \
